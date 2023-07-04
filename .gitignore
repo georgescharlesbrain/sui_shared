@@ -1,0 +1,4 @@
+sui.log.*
+build
+.idea
+.env
