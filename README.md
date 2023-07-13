@@ -16,7 +16,7 @@ Every package should have a README explaining the source of the code and the pur
   - sui-system (staking, storage fund, validators, genesis, ...)
   - sui-framework (core on-chain libraries)
   - move-stdlib (standard move which is extended by the sui-framework into sui move)
-  - deepbook (CLOB)
+  - deepbook (CLOB) [PPT](https://docs.google.com/presentation/d/15BjD1qyNrU_DwKVBBamM_adpffo8HsQjKzJoUv96VnI/edit#slide=id.g2121ec92a79_0_0)  [YouTube Presentation](https://www.youtube.com/watch?v=Rq48Voba6nc)  
 - [kiosk](https://github.com/MystenLabs/sui/tree/devnet/crates/sui-framework/packages/sui-framework/sources/kiosk) (MystenLabs - Kiosk is a primitive for building open, zero-fee trading platforms with a high degree of customization over transfer policies.)
 - [sui foundation - sui move intro course](https://github.com/sui-foundation/sui-move-intro-course)
 
