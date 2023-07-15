@@ -4,7 +4,7 @@
 Tests and notes for [examples.sui.io](https://examples.sui.io) by MystenLabs [github sub-folder](https://github.com/MystenLabs/sui/tree/main/doc/book).
 Notes, questions and highlights are added to the website using the [hypothesis browser extension](https://hypothes.is/search?q=https%3A%2F%2Fexamples.sui.io%2F).
 
-Some parts are exampels of the usage of specific sui framework modules. It can be usefull to have a look at the documentation and implementation of the sui framework modules. The sui framework modules can be found [here](https://github.com/MystenLabs/sui/tree/main/crates/sui-framework/packages/sui-framework/sources)
+Some parts are examples of the usage of specific sui framework modules. It can be usefull to have a look at the documentation and implementation of the sui framework modules. The sui framework modules can be found [here](https://github.com/MystenLabs/sui/tree/main/crates/sui-framework/packages/sui-framework/sources)
 
 ## Sui Basics
 
