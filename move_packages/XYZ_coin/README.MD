@@ -36,7 +36,7 @@ coin object --> package object --> see first transaction to find the CoinMetadat
 
 [X] Add more features to the coin  
 [X] check interest-protocol repo
-[] check [sui move intro course by sui foundation](https://github.com/sui-foundation/sui-move-intro-course/tree/main) 
+[] check [sui move intro course by sui foundation](https://github.com/sui-foundation/sui-move-intro-course/tree/main)
 [] check other coin implementations
 [] testing? check interest-protocol
 [] generate a basic SDK using KuraLabs or kklas tool
