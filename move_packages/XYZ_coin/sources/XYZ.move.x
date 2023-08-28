@@ -6,6 +6,7 @@
         for coins: mint, burn, transfer, total_supply
         for minter management: is_minter, add_minter, remove_minter
 
+    If multiple minters are not required, then have a look at XYZ_basic.move.
 
 */
 

@@ -33,7 +33,7 @@ module examples::xyz{
         // - Cannot be transferred
         //
         // Note: transfer::freeze_object() cannot be used since CoinMetadata is defined in another 
-        //       module
+        //       module, the coin module in this case.
         transfer::public_freeze_object(coin_metadata);
 
         // Send the TreasuryCap object to the publisher of the module
