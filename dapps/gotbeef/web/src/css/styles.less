@@ -1,0 +1,399 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url(./PressStart2P-Regular.ttf) format('truetype');
+}
+
+/* Variables */
+
+@page-width: 810px;
+@body-background-color: #5c94fc;
+@page-background-color: #f7f7f7;
+@cursor-pointer: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
+
+/* Default elements */
+
+body {
+    background: @body-background-color;
+    overflow-wrap: anywhere;
+}
+ul {
+    margin-top: 0.4em;
+    list-style: square;
+}
+li {
+    margin-bottom: 0.4em;
+}
+h2 {
+    margin: 0.1em 0 0.6em ;
+}
+button {
+    overflow-wrap: initial;
+}
+textarea {
+    min-height: 5em;
+}
+table {
+    margin-bottom: 1em;
+}
+th {
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+th, td {
+    overflow-wrap: anywhere;
+    padding-top: 0.5em;
+    padding-left: 0;
+    padding-bottom: 0.5em;
+    padding-right: 2.5em;
+}
+td {
+    vertical-align: top;
+}
+a:hover {
+    color: #00baff;
+}
+
+/* Specific elements */
+
+#page {
+    max-width: @page-width;
+    margin: 0 auto;
+}
+#main {
+    background: @page-background-color;
+    border: 4px solid black;
+    margin: 2em 0 0.5em 0;
+    padding: 1.2em 1.8em 1.6em;
+}
+#network-selector {
+    position: absolute;
+    right: 5;
+    top: 3;
+    z-index: 1;
+    background: @body-background-color;
+    color: white;
+    font-size: 0.9em;
+    padding: 0 0 3px 3px;
+    text-align: right;
+    user-select: none;
+    .network-options {
+        .network-option {
+            &:hover:not(.selected) {
+                cursor: @cursor-pointer;
+                color: lightgreen;
+                text-decoration: underline;
+            }
+        }
+    }
+    @media (max-width: @page-width) {
+        color: inherit;
+        background: @page-background-color;
+    }
+}
+#header {
+    text-align: center;
+}
+#title {
+    user-select: none;
+    font-size: 2.3em;
+    span:hover #cow {
+        display: inline-block;
+    }
+}
+#cow {
+    display: none;
+    width: 1.15em;
+    vertical-align: top;
+    margin-top: 0.06em;
+    margin-left: 0.4em;
+    &:hover {
+       transform: rotate(8deg);
+    }
+}
+#nav {
+    border-bottom: 4px solid pink;
+    padding-bottom: 1em;
+}
+#content {
+    padding-top: 1.5em;
+}
+#bet-actions-container, .bet-modal {
+    margin-bottom: 2em;
+}
+.button-container {
+    .nes-btn {
+        min-width: 16em;
+        display: block;
+        margin: 1em auto;
+    }
+}
+#bet-actions {
+    text-align: center;
+    .error {
+        font-style: italic;
+        font-size: 0.9em;
+        display: block;
+        margin-bottom: 1.5em;
+    }
+    .nes-btn:last-child {
+        margin: 0 auto 0 auto;
+    }
+}
+#bet-summary {
+    width: auto;
+    td:nth-child(1) {
+        text-align: right;
+        padding-right: 1.5em;
+        white-space: nowrap;
+    }
+    td, tr {
+        overflow-wrap: anywhere;
+    }
+}
+.field-note {
+    color: #606060;
+    font-size: 0.85em;
+    margin: 0 0 0 4px;
+}
+#footer {
+    font-size: 0.75em;
+    margin-bottom: 5em;
+    padding-left: 0.1em;
+    padding-right: 0.2em;
+    a {
+        opacity: 0.7;
+        color: white;
+        &:hover {
+            opacity: 1;
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+#footer-links {
+    float: left;
+    font-size: 1.9em;
+    line-height: 0.75em;
+    .icon {
+        margin-right: 0.2em;
+    }
+}
+#footer-signature {
+    float: right;
+    .nes-icon {
+        vertical-align: bottom;
+    }
+}
+#footer a:hover .rainbow, .rainbow:hover {
+    text-decoration: none;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, gold, orange, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@small-device-width: 480px;
+@medium-device-width: 481px;
+#more-from-us {
+    margin-top: 5em;
+    margin-bottom: 1em;
+    color: #fff;
+    @media (max-width: @page-width) {
+        padding: 0 1.5em;
+    }
+    @media (max-width: @small-device-width) {
+        padding: 0 4em;
+    }
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 0.3em;
+        text-align: center;
+    }
+    #apps-showcase {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 -8px; // Add negative margins to counteract child padding for proper alignment
+        .app {
+            box-sizing: border-box;
+            flex-grow: 1;
+            flex-basis: calc(100% / 3 - 16px); // Calculate width minus the gap
+            margin: 8px; // Add margin to create the gap
+            position: relative;
+            border: 4px solid black;
+
+            @media (max-width: @small-device-width) {
+                flex-basis: 100%;
+                font-size: 1.2em;
+            }
+
+            .app-photo {
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            .app-details {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                overflow-y: scroll;
+
+                .app-title {
+                    margin-top: 0;
+                    margin-bottom: 0.7em;
+                }
+
+                .app-description {
+                    @media (min-width: @medium-device-width) {
+                        font-size: 0.8em;
+                    }
+                    margin-bottom: 0;
+                }
+            }
+
+            .app-btn-wrap {
+                text-align: center;
+                .nes-btn {
+                    margin-top: 1.5em;
+                }
+            }
+
+            &:hover {
+                border-color: white;
+                .app-details {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.cloud, .steak {
+    position: absolute;
+    width: 145px;
+    height: 108px;
+    background-repeat: no-repeat;
+}
+.cloud {
+    background-image: url(../img/cloud.png);
+    &:hover {
+        background-size: 150px;
+        width: 150px;
+        height: 113px;
+    }
+}
+.steak {
+    background-image: url(../img/steak.svg);
+    background-size: 140px;
+    background-position: center;
+}
+.door-closed, .door-open {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    width: 100px;
+    height: 162px;
+}
+.door-closed {
+    background-image: url(../img/door_closed.webp);
+}
+.door-open {
+    background-image: url(../img/door_open.webp);
+}
+#not-found-img {
+    width: 100%;
+    border: 4px solid black;
+    image-rendering: pixelated;
+}
+#secret {
+    display: none;
+}
+.player-box {
+    border: 4px solid black;
+    margin: 1em 0;
+    padding: 1em;
+    .player-box-answer {
+        display: block;
+        margin-top: 1em;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: @page-width) {
+    body {
+        font-size: 0.75em;
+    }
+    textarea {
+        min-height: 80px;
+    }
+    #main {
+        border-width: 0 0 4px 0;
+        margin-top: 0
+    }
+    #footer {
+        padding-left: 0.5em;
+        padding-right: 0.6em;
+    }
+    th, td {
+        &:nth-child(1) {
+            padding-right: 2em;
+        }
+        padding-right: 1em;
+    }
+    .nes-btn, .nes-input, .nes-textarea, .nes-select select {
+        border-image: initial;
+        border: 3px #212529 solid;
+    }
+    .nes-input, .nes-textarea, .nes-select select {
+        &.is-error {
+            border: 3px #ce372b solid;
+        }
+    }
+    .nes-btn {
+        &:hover {
+            border-color: #000;
+        }
+        &:after, &:hover:after,
+        &.is-primary:after, &.is-primary:hover:after,
+        &.is-success:after, &.is-success:hover:after,
+        &.is-warning:after, &.is-warning:hover:after,
+        &.is-error:after, &.is-error:hover:after
+        {
+            box-shadow: initial;
+        }
+    }
+}
+
+/* Customize NES.css */
+
+.nes-container {
+    &.with-title > .title {
+        background-color: @page-background-color;
+    }
+}
+.nes-icon.is-small {
+    transform: scale(1.1);
+    margin-bottom: 0.1em;
+}
+.nes-icon.is-custom {
+    margin: 0 0.5em 0.4em 0.2em;
+    transform: scale(1.6);
+}
+.custom-logo {
+    margin: 0 -0.4em -0.3em -0.4em;
+    transform: scale(0.75);
+}
+.nes-select {
+    margin-top: 0;
+}
+.nes-field {
+    margin-top: 1.8em;
+}

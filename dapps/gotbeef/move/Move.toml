@@ -1,0 +1,15 @@
+[package]
+name = "gotbeef"
+version = "0.0.2"
+authors = ["GCB <https://twitter.com/georges_c_brain>"]
+license = "Apache-2.0"
+# published-at = "0x48c8d8b15fffb136efcb4532044af4ce45040bbc0b58184b055b44666d5e1549"
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet" }
+# Sui = { local = "../../sui/crates/sui-framework/packages/sui-framework" }
+# Sui = { local = "/home/<user>/suibase/workdirs/active/sui-repo/crates/sui-framework/packages/sui-framework" }
+Sui = { local = "../../../../../suibase/workdirs/active/sui-repo/crates/sui-framework/packages/sui-framework" }
+
+[addresses]
+gotbeef = "0x0"
