@@ -1,9 +1,8 @@
 {
-    "name": "gotbeef",
+    "name": "@polymedia/gotbeef-web",
     "author": "@juzybits (https://polymedia.app)",
     "license": "Apache-2.0",
     "private": true,
-    "source": "src/index.html",
     "dependencies": {
         "@mysten/sui.js": "latest",
         "@mysten/wallet-kit": "latest",
@@ -14,26 +13,26 @@
         "nes.css": "latest",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.15.0"
+        "react-router-dom": "^6.16.0"
     },
     "devDependencies": {
         "@parcel/transformer-less": "latest",
         "@types/react": "^18.2.21",
         "@types/react-dom": "^18.2.7",
-        "@typescript-eslint/eslint-plugin": "^6.5.0",
-        "@typescript-eslint/parser": "^6.5.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.0",
+        "@typescript-eslint/parser": "^6.7.0",
         "buffer": "^5.7.1",
-        "eslint": "^8.48.0",
+        "eslint": "^8.49.0",
         "eslint-plugin-deprecation": "^1.5.0",
         "events": "^3.3.0",
-        "htmlnano": "2.0.3",
         "parcel": "latest",
         "process": "latest",
         "react-devtools": "latest"
     },
     "scripts": {
         "lint": "eslint ./src --ext .ts,.tsx",
-        "serve": "rm -rf .parcel-cache/ && parcel",
-        "build": "parcel build"
+        "serve": "rm -rf .parcel-cache/ && parcel src/index.html",
+        "build": "rm -rf dist/ && parcel build --no-source-maps src/index.html && cp src/static/* dist/",
+        "deploy-prod": "pnpm build && wrangler pages publish dist/ --project-name polymedia-gotbeef --branch main"
     }
 }
