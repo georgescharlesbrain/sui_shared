@@ -20,7 +20,7 @@ export function App() {
     const location = useLocation();
     const [network, setNetwork] = useState<NetworkName|null>(null);
     const [suiClient, setSuiClient] = useState<SuiClient|null>(null);
-    const showNetworkSelector = isLocalhost();
+    const showNetworkSelector = true // isLocalhost();
 
     useEffect(() => {
         async function initialize() {
