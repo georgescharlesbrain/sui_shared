@@ -3,10 +3,10 @@
 import { SuiClient } from '@mysten/sui.js/client';
 import { NetworkName } from '@polymedia/webutils';
 
-const GOTBEEF_PACKAGE_LOCALNET = '0x48c8d8b15fffb136efcb4532044af4ce45040bbc0b58184b055b44666d5e1549';
-const GOTBEEF_PACKAGE_DEVNET = '0xe3bf7bfbe0c7053e37e836e7c9fd8ee506a9b9df52da0ac75496c9b21d3358d1';
-const GOTBEEF_PACKAGE_TESTNET = '0x2bd6ccb560d77a2e796973066550e986aaf05464a23a670ccf9aefc0fffe90e8';
-const GOTBEEF_PACKAGE_MAINNET = '0x8221cc562f8c58c922c6a40ecbc7e2f16b0159fb683470c22e96d21a0dc52beb';
+const GOTBEEF_PACKAGE_LOCALNET = '0x25a931e39c2b298c6a093cf015c973839292eb651504a6259697579a6bf70d47';
+// const GOTBEEF_PACKAGE_DEVNET = '0xe3bf7bfbe0c7053e37e836e7c9fd8ee506a9b9df52da0ac75496c9b21d3358d1';
+const GOTBEEF_PACKAGE_TESTNET = '0x31941f5fd8f2c9b4c5d61c0757d7334b6ff9c2e65e70179dfdd37fca36fb47ab';
+// const GOTBEEF_PACKAGE_MAINNET = '0x8221cc562f8c58c922c6a40ecbc7e2f16b0159fb683470c22e96d21a0dc52beb';
 
 type Config = {
     packageId: string;
@@ -15,12 +15,12 @@ export function getConfig(network: NetworkName): Config {
     switch (network) {
         case 'localnet':
             return { packageId: GOTBEEF_PACKAGE_LOCALNET };
-        case 'devnet':
-            return { packageId: GOTBEEF_PACKAGE_DEVNET };
+        // case 'devnet':
+        //     return { packageId: GOTBEEF_PACKAGE_DEVNET };
         case 'testnet':
             return { packageId: GOTBEEF_PACKAGE_TESTNET };
-        case 'mainnet':
-            return { packageId: GOTBEEF_PACKAGE_MAINNET };
+        // case 'mainnet':
+        //     return { packageId: GOTBEEF_PACKAGE_MAINNET };
         default:
             throw new Error('Invalid network: ' + network);
     }
