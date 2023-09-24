@@ -4,18 +4,16 @@ See projects README.md for more information
 
 #[allow(unused_const, unused_use, unused_type_parameter)]
 module gotbeef::bet {
-    friend gotbeef::bet_tests;
-
     /* Imports */
     use std::option::{Self, Option};
     use std::string::{String, utf8};
     use std::vector;
     use std::debug;
-
     // debug::print(&title_len);
 
     use sui::coin::{Self, Coin};
-    // use sui::display;
+    use sui::display;
+    use sui::package;
     use sui::event;
     use sui::object::{Self, ID, UID};
     use sui::transfer;
@@ -323,6 +321,35 @@ module gotbeef::bet {
         let votes_remaining = number_of_judges - votes_so_far;
         let distance_to_win = bet.quorum - bet.most_votes;
         return votes_remaining < distance_to_win
+    }
+
+    // One-Time-Witness
+    struct BET has drop {}
+
+    fun init(otw: BET, ctx: &mut TxContext)
+    {
+        let publisher = package::claim(otw, ctx);
+
+        let bet_display = display::new_with_fields<Bet<sui::sui::SUI>>(
+            &publisher,
+            vector[
+                utf8(b"name"),
+                utf8(b"description"),
+                utf8(b"link"),
+                utf8(b"project_url"),
+                utf8(b"creator"),
+            ], vector[
+                utf8(b"Bet: {title}"),
+                utf8(b"{description}"),
+                utf8(b"https://gotbeef.onrender.com//bet/{id}"),
+                utf8(b""),
+                utf8(b"GCB")
+            ], ctx
+        );
+        display::update_version(&mut bet_display);
+
+        transfer::public_transfer(publisher, tx_context::sender(ctx));
+        transfer::public_transfer(bet_display, tx_context::sender(ctx));
     }
 
 }
