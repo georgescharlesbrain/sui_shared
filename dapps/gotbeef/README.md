@@ -19,3 +19,5 @@ The move code is rewritten from scratch from the [gotbeef](https://github.com/ju
 See move code for open "TODO" items.
 
 See private notion page for extra notes.
+
+[web app on testnet](https://gotbeef.onrender.com)
