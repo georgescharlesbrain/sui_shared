@@ -4,7 +4,7 @@ import { SuiClient } from '@mysten/sui.js/client';
 import { NetworkName } from '@polymedia/webutils';
 
 const GOTBEEF_PACKAGE_LOCALNET = '0x25a931e39c2b298c6a093cf015c973839292eb651504a6259697579a6bf70d47'; //GCB
-const GOTBEEF_PACKAGE_DEVNET = '0xe3bf7bfbe0c7053e37e836e7c9fd8ee506a9b9df52da0ac75496c9b21d3358d1';
+const GOTBEEF_PACKAGE_DEVNET = '0x1268f202feab32e88e517504da606e03d421f5c6dbaa348829da7b56242c6ec8';
 const GOTBEEF_PACKAGE_TESTNET = '0x31941f5fd8f2c9b4c5d61c0757d7334b6ff9c2e65e70179dfdd37fca36fb47ab'; //GCB
 const GOTBEEF_PACKAGE_MAINNET = '0x8221cc562f8c58c922c6a40ecbc7e2f16b0159fb683470c22e96d21a0dc52beb';
 
