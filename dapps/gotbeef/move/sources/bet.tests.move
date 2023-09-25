@@ -530,9 +530,9 @@ module gotbeef::bet_tests{
         ts::end(scen_val);
     }
 
-    #[test, expected_failure(abort_code = gotbeef::bet::E_UNFORESEEN_CANCELLATION_CASE_DURING_VOTING)]
-    /// Try to cancel a bet in the voting phase
-    fun test_cancel_e_unforeseen_cancellation_case_during_voting()
+    #[test, expected_failure(abort_code = gotbeef::bet::E_CANCEL_REQUEST_ALREADY_MADE)]
+    /// Try to cancel a bet in the voting phase twice
+    fun test_cancel_e_cancel_request_already_made()
     {
         let scen_val = ts::begin(CREATOR);
         let scen = &mut scen_val; {
@@ -543,7 +543,32 @@ module gotbeef::bet_tests{
         ts::next_tx(scen, PLAYER_2); { fund_bet(scen, BET_SIZE); };
 
         // judges are not showing up to vote, 
-        // PLAYER_1 panics and tries to cancel the bet
+        // PLAYER_1 tries to cancel the bet twice
+
+        ts::next_tx(scen, PLAYER_1); {
+            let bet_val = ts::take_shared<Bet<SUI>>(scen);
+            let bet = &mut bet_val;
+            assert!( bet::phase(bet) == PHASE_VOTE, 0 );
+            bet::cancel( bet, ts::ctx(scen) );
+            bet::cancel( bet, ts::ctx(scen) );
+            ts::return_shared(bet_val);
+        };
+        ts::end(scen_val);
+    }
+
+    #[test]
+    /// Try to cancel a bet in the voting phase
+    fun test_cancel_during_voting_success()
+    {
+        let scen_val = ts::begin(CREATOR);
+        let scen = &mut scen_val; {
+            create_bet(scen);
+        };
+
+        ts::next_tx(scen, PLAYER_1); { fund_bet(scen, BET_SIZE); };
+        ts::next_tx(scen, PLAYER_2); { fund_bet(scen, BET_SIZE); };
+
+        // judges are not showing up to vote
 
         ts::next_tx(scen, PLAYER_1); {
             let bet_val = ts::take_shared<Bet<SUI>>(scen);
@@ -552,6 +577,15 @@ module gotbeef::bet_tests{
             bet::cancel( bet, ts::ctx(scen) );
             ts::return_shared(bet_val);
         };
+        ts::next_tx(scen, PLAYER_2); {
+            let bet_val = ts::take_shared<Bet<SUI>>(scen);
+            let bet = &mut bet_val;
+            assert!( bet::phase(bet) == PHASE_VOTE, 0 );
+            bet::cancel( bet, ts::ctx(scen) );
+            assert!( bet::phase(bet) == PHASE_CANCELED, 0 );
+            ts::return_shared(bet_val);
+        };
+
         ts::end(scen_val);
     }
 

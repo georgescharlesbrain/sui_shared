@@ -61,6 +61,7 @@ module gotbeef::bet {
         answers: VecMap<address, String>, // <player_addr, player_answer>
         most_votes: u64, // number of votes received by the leading player (to detect stalemates)
         winner: Option<address>,
+        cancel_requests: vector<address>
 
         // start_epoch: Option<u64>, // (maybe) voting starts on this day
         // end_epoch: Option<u64>, // (maybe) voting ends on this day
@@ -116,7 +117,9 @@ module gotbeef::bet {
     public fun winner<T>(bet: &Bet<T>): &Option<address> {
         &bet.winner
     }
-
+    public fun cancel_requests<T>(bet: &Bet<T>): &vector<address> {
+        &bet.cancel_requests
+    }
     
 
     /* Public/entry functions */
@@ -170,6 +173,7 @@ module gotbeef::bet {
             answers: vec_map::empty(),
             most_votes: 0,
             winner: option::none(),
+            cancel_requests: vector::empty(),
 
         };
 
@@ -274,6 +278,7 @@ module gotbeef::bet {
     const E_BET_ALREADY_CANCELLED: u64 = 306;
     const E_BET_ENDED_IN_STALEMATE: u64 = 307;
     const E_UNFORESEEN_CANCELLATION_CASE: u64 = 308;
+    const E_CANCEL_REQUEST_ALREADY_MADE: u64 = 309;
 
     public entry fun cancel<T>(
         bet: &mut Bet<T>, 
@@ -299,9 +304,17 @@ module gotbeef::bet {
             }
         }
         else if (bet.phase == PHASE_VOTE){
-            // should there ever be a possibility to cancel a bet during voting?
-            // TODO provide the option to unanimously cancel a bet during voting
-            assert!( false, E_UNFORESEEN_CANCELLATION_CASE_DURING_VOTING );
+            // Provide the players the option to unanimously cancel a bet during voting
+            assert!( !vector::contains(&bet.cancel_requests, &sender), E_CANCEL_REQUEST_ALREADY_MADE );
+            assert!( is_player, E_NOT_AUTHORIZED );
+            vector::push_back(&mut bet.cancel_requests, sender);
+
+            let player_len = vector::length(&bet.players);
+            let cancel_requests_len = vector::length(&bet.cancel_requests);
+            if ( player_len == cancel_requests_len){
+                transfers::refund_all(&mut bet.funds);
+                bet.phase = PHASE_CANCELED;
+            }
         }
         else {
             assert!( !(bet.phase == PHASE_CANCELED), E_BET_ALREADY_CANCELLED );
