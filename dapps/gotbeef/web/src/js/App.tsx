@@ -24,7 +24,8 @@ export function App() {
 
     useEffect(() => {
         async function initialize() {
-            const network = isLocalhost() ? loadNetwork() : 'mainnet';
+            // const network = isLocalhost() ? loadNetwork() : 'mainnet';
+            const network = loadNetwork();
             const rpcConfig = await getRpcConfig({network, fetch: false});
             const suiClient = new SuiClient({url: rpcConfig.fullnode});
             setNetwork(network);
