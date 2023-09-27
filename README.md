@@ -22,6 +22,7 @@ Every package should have a README explaining the source of the code and the pur
 
 #### Dapp repos
 
+- [Polymedia Apps](https://github.com/juzybits?tab=repositories&type=source)
 - [Interest Protocol](https://github.com/interest-protocol)
 - [Scallop](https://github.com/scallop-io)
 - [Bucket Protocol](https://github.com/BucketProtocol)

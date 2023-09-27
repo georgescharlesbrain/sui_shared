@@ -13,7 +13,7 @@ module gotbeef::bet_tests{
     use sui::sui::SUI;
     use sui::vec_map;
     use sui::test_scenario::{Self as ts, Scenario};
-    use sui::test_utils;
+    use sui::test_utils::{Self};
 
     use gotbeef::bet::{Self, Bet};
 
@@ -62,6 +62,7 @@ module gotbeef::bet_tests{
     #[test]
     fun test_accessors()
     {
+        test_utils::print(b"start tests")
         let scen_val = ts::begin(CREATOR);
         let scen = &mut scen_val; {
             bet::create<SUI>( TITLE, DESC, QUORUM, BET_SIZE, PLAYERS, JUDGES, ts::ctx(scen) );
