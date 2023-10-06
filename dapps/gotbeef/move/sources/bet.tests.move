@@ -62,7 +62,7 @@ module gotbeef::bet_tests{
     #[test]
     fun test_accessors()
     {
-        test_utils::print(b"start tests")
+        test_utils::print(b"start tests");
         let scen_val = ts::begin(CREATOR);
         let scen = &mut scen_val; {
             bet::create<SUI>( TITLE, DESC, QUORUM, BET_SIZE, PLAYERS, JUDGES, ts::ctx(scen) );
