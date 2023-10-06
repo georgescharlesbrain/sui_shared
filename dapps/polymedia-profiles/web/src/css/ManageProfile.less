@@ -1,0 +1,50 @@
+@import './variables.less';
+
+#page.page-manage-profile {
+    .section {
+        h2 {
+            margin-top: 1em;
+            margin-bottom: 0.48em;
+        }
+    }
+    .section-info {
+        p {
+            font-size: 0.9em;
+            overflow-wrap: anywhere;
+            margin-bottom: 0.5em;
+        }
+    }
+    .section-image {
+        img {
+            border-radius: 0.9em;
+            border: 4px solid var(--text-color);;
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+        }
+    }
+    .field-error, .field-info {
+        font-size: 0.7em;
+        margin-bottom: 0.25em;
+        margin-top: 0.25em;
+    }
+    .field-error {
+        color: @color-red;
+    }
+    .field-info {
+        font-style: italic;
+    }
+    .field-error-imgur { // Drake meme
+        margin-top: 0.5em;
+        img {
+            width: 100%;
+            margin-top: 6px;
+            border-radius: 8px;
+        }
+    }
+    .field-optional {
+        margin-left: 0.4em;
+        color: #ccc;
+        font-size: 0.7em;
+    }
+}
