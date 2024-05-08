@@ -4,6 +4,8 @@ This repo contains shared code created during my sui research.
 
 ## sui_shared folder structure
 
+[visual representation of repo](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=georgescharlesbrain%2Fsui_shared)
+
 ### move_packages
 
 Contains move packages which can be tutorials, examples or custom-made move packages.
